@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if code %}
+	{% for thing in code %}
+
+Your question: {{ thing.question }} <br/>
+The response of the code robot returned the result in {{ thing.language|title }}:<br/>
+
+<pre>
+<code class='line-numbers language-{{ thing.language }}'>
+{{ thing.code_answer }}
+
+</code>
+</pre>
+<a href="{% url 'delete_past' thing.id %}" class='btn btn-outline-secondary btn-sm'>Delete This</a>
+
+
+<br/><br/><br/><br/>
+
+
+		
+	{% endfor %}
+
+{% endif %}
+
+
+
+
+{% endblock %}
